@@ -1,0 +1,15 @@
+h1{
+    color:red;
+}
+
+.formError{
+    color:red;
+}
+
+input.formError{
+    background-color:lavenderblush;
+}
+
+#age, #name, #email {
+    margin-right: 10px;
+}
