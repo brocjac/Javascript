@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabs</title>
+    <link rel="stylesheet" href="tabs.css">
+</head>
+<body>
+
+<h1>Easy Tabs</h1>
+<div id="tab-container" class="tab-container">
+    <ul class="etabs">
+        <li class="tab"><a href="#tab1">Tab 1</a></li>
+        <li class="tab"><a href="#tab2">Tab 2</a></li>
+        <li class="tab"><a href="#tab3" id="summary">Tab 3</a></li>
+    </ul>
+    <div class="panel-container">
+        <div id="tab1">
+            <input checked type="radio" name="size" id="small" value="small">
+            <label for="small">small</label><br>
+            <input type="radio" name="size" id="medium" value="medium">
+            <label for="medium">medium</label><br>
+            <hr>
+            <input type="checkbox" id="onions">
+            <label for="onions">onions</label><br>
+            <input type="checkbox" id="peppers">
+            <label for="peppers">peppers</label><br>
+        </div>
+        <div id="tab2">
+            Content in the 2nd tab.
+        </div>
+        <div id="tab3">
+            Subtotal: $<span id="subtotal">0.00</span>
+        </div>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="jquery.hashchange.min.js"></script>
+<script src="jquery.easytabs.min.js"></script>
+<script src="tabs.js"></script>
+
+</body>
+</html>
