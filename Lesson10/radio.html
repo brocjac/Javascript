@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Radio Buttons</title>
+</head>
+<body>
+
+    <form>
+        <label for="small">
+            <input type="radio" name="size" id="small" checked value="small"> Small
+        </label><br>
+        <label for="medium">
+            <input type="radio" name="size" id="medium" value="medium"> Medium
+        </label><br>
+        <label for="large">
+            <input type="radio" name="size" id="large" value="large"> Large
+        </label><br>
+        <label for="xl">
+            <input type="radio" name="size" id="xl" value="xl"> X-Large
+        </label><br>
+        <button type="button" id="choose">Choose Soda Size</button>
+    </form>
+    <p id="result">Please choose your soda size</p>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="radio.js"></script>
+
+</body>
+</html>
