@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loops</title>
+</head>
+<body>
+
+<form>
+    <div>
+        <label for="X">Enter an integer > 1: </label>
+        <input type="text" id="X" name="X" value="5">
+    </div>
+    <fieldset>
+        <legend>Test method</legend>
+        <div>
+            <input checked type="radio" name="loop" id="while" value="while">
+            <label for="while">While Loop: Print a character X times</label>
+            <div id="while_results"></div>
+        </div>
+        <div>
+            <input type="radio" name="loop" id="for" value="for">
+            <label for="for">For Loop: Sum of 1 through X</label>
+            <div id="for_results"></div>
+        </div>
+        <div>
+            <input type="radio" name="loop" id="do" value="do">
+            <label for="do">Do-While Loop: Print the numbers 1 through X</label>
+            <div id="do_results"></div>
+        </div>
+    </fieldset>
+    <button type="button" id="run">Run Loop</button>
+</form>
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    $(function(){
+        $('#run').on('click', function() {
+            var loop = $('input:checked[name=loop]').val();
+            switch (loop)
+            {
+                case "while":
+                    while_loop();
+                    break;
+                case "for":
+                    for_loop();
+                    break;
+                case "do":
+                    do_loop();
+                    break;
+            }
+        });
+
+        function while_loop(){
+            // print a character X times
+            var x = Number($('#X').val());
+            var counter = 0;
+
+            $('#while_results').html("");
+            while(counter < x){
+                $('#while_results').append("*");
+                counter += 1;
+            }
+        }
+
+        function for_loop(){
+            // Sum of 1 through X
+            var x = Number($('#X').val());
+            var sum = 0;
+
+            for(var i = 1; i <= x; i++){
+                sum += i
+            }
+            $('#for_results').html(sum);
+        }
+
+        function do_loop(){
+            // Print the numbers 1 - X
+            // print a character X times
+            var x = Number($('#X').val());
+            var counter = 1;
+
+            $('#do_results').html("");
+            do {
+                $('#do_results').append(counter);
+                counter += 1;
+            } while (counter <= x);
+        }
+    });
+</script>
+
+</body>
+</html>
