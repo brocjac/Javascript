@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>&#x1F432; dragon</title>
+    <style>
+        #emoji, button {
+            font-size: 3em;
+        }
+    </style>
+</head>
+<body>
+
+<button id="dragon">dr&#x1F432;gons</button>
+<div id="emoji"></div>
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    $(function(){
+        $('#dragon').on('click', function(){
+            //$('#emoji').append("&#x1F432;");
+            $('#emoji').html("");
+            var rows = Number(prompt("How many rows?"));
+            for (var i = 1; i <= rows; i++){
+                for (var j = 1; j <= i; j++){
+                    $('#emoji').append("&#x1F432;");
+                }
+                $('#emoji').append("<br>");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
