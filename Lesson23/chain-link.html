@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chain Link</title>
+</head>
+<body>
+<form>
+    <label for="sentence">Enter sentence below</label>
+    <br>
+    <textarea id="sentence" rows="5" cols="20">The head administrator organized education on online networks</textarea>
+    <br>
+    <button type="button" id="check">Check</button>
+</form>
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    $(function(){
+        // attach event listener to button
+        $('#check').on('click', function(){
+            var str = $('#sentence').val().toLowerCase().replace(/[,;:'.()]/g, '');
+            var arr = str.split(" ");
+            //console.log(arr);
+            // assume this is a chain link
+            var isChainLink = true;
+            // loop thru array of words
+            for (var i = 0; i < arr.length - 1; i++){
+                //console.log(arr[i].substr(arr[i].length - 2) + "|" + arr[i + 1].substr(0, 2));
+                var str1 = arr[i].substr(arr[i].length - 2);
+                var str2 = arr[i + 1].substr(0, 2)
+                if (str1 != str2){
+                    isChainLink = false;
+                    break;
+                }
+            }
+            // display whether or not this is a chain link
+            if (isChainLink){
+                alert("This is a chain link");
+            } else {
+                alert("This is NOT a chain link");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
