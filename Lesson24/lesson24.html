@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array Searching & Sorting</title>
+</head>
+<body>
+
+<form>
+    <label for="name">Search</label>
+    <input type="text" id="name">
+    <button type="button" id="find">find</button>
+    <button type="button" id="findIgnoreCase">find ignore case</button>
+    <button type="button" id="findAll">find all</button>
+    <hr>
+    <button type="button" id="sort">sort</button>
+    <button type="button" id="sortIgnoreCase">sort ignore case</button>
+</form>
+
+<div id="content"></div>
+<div id="searchResults"></div>
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    // start by creating an array of names
+    var myArray = ["Jeff", "Mary", "bob", "Joe", "Anne", "Adam", "Missy", "mary", "Joe", "Harry"];
+
+    $(function(){
+        displayTable();
+        $('#find').on('click', function(){
+            // input search string
+            var name = $('#name').val();
+            var searchIdx = myArray.indexOf(name);
+            $('#searchResults').html(searchIdx == -1 ? name + " not found" : name +
+                " found at index " + searchIdx);
+        });
+
+        $('#findIgnoreCase').on('click', function(){
+            // input search string
+            var name = $('#name').val();
+            var searchIdx = -1;
+            for (var i = 0; i < myArray.length; i++){
+                if (name.toLowerCase() == myArray[i].toLowerCase()){
+                    searchIdx = i;
+                    break;
+                }
+            }
+            $('#searchResults').html(searchIdx == -1 ? name + " not found" : name +
+                " found at index " + searchIdx);
+        });
+
+        $('#findAll').on('click', function(){
+            // input search string
+            var name = $('#name').val();
+            var searchIndexes = [];
+            for (var i = 0; i < myArray.length; i++){
+                if (name.toLowerCase() == myArray[i].toLowerCase()){
+                    searchIndexes.push(i);
+                }
+            }
+            $('#searchResults').html(searchIndexes.length == 0 ? name + " not found" : name +
+                " found at index(es) " + searchIndexes);
+        });
+
+        $('#sort').on('click', function(){
+            myArray.sort();
+            displayTable();
+        });
+
+        $('#sortIgnoreCase').on('click', function(){
+            var passNumber = 1;
+            do {
+                var swapped = false;
+                for (var i = 0; i < myArray.length - passNumber; i++){
+                    if (myArray[i].toLowerCase() > myArray[i + 1].toLowerCase()){
+                        // swap elements
+                        var temp = myArray[i];
+                        myArray[i] = myArray[i + 1];
+                        myArray[i + 1] = temp;
+                        swapped = true;
+                    }
+                }
+                passNumber += 1;
+            } while (swapped);
+            displayTable();
+        });
+
+        function displayTable(){
+            var row1 = "<tr>";
+            var row2 = "<tr>";
+            for (var i = 0; i < myArray.length; i++){
+                row1 += "<td>" + myArray[i] + "</td>";
+                row2 += "<td>" + i + "</td>";
+            }
+            row1 += "</tr>";
+            row2 += "</tr>";
+            $('#content').html("<table border='1'>" + row1 + row2 + "</table>");
+        }
+    });
+</script>
+
+</body>
+</html>
