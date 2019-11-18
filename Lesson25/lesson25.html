@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Arrays</title>
+</head>
+<body>
+
+<div id="parallel"></div>
+<div id="2d"></div>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    $(function(){
+        // create parallel arrays
+        var products = ["Burger", "Soda", "Fries"];
+        var prices = [4.99, 1.89, 2.49];
+        // create 2d array
+        var products2d = [
+            ["Rod", 14.99],
+            ["Reel", 11.89],
+            ["Boat", 200.49]
+        ];
+
+        displayParallel();
+        display2d();
+
+        function display2d(){
+            for (var row = 0; row < products2d.length; row++){
+                for (var col = 0; col < products2d[row].length; col++){
+                    $('#2d').append(products2d[row][col] + " ");
+                }
+                $('#2d').append("<br>");
+            }
+        }
+
+        function displayParallel(){
+            var str = "<table border='1'>";
+            str += "<tr><th>Product</th><th>Price</th></tr>";
+            for(var i = 0; i < products.length; i++){
+                str += "<tr><td>" + products[i] + "</td>" +
+                        "<td>" + prices[i] + "</td>"
+            }
+            str += "</table>";
+            $('#parallel').html(str);
+        }
+    });
+</script>
+
+</body>
+</html>
