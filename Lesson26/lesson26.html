@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Objects</title>
+</head>
+<body>
+
+<form>
+    <label for="first">First Name:</label>
+    <input type="text" id="first" value="Jeff"><br>
+    <label for="last">Last Name:</label>
+    <input type="text" id="last" value="Grissom"><br>
+    <label for="earned">Points Earned:</label>
+    <input type="text" id="earned" value="235"><br>
+    <label for="possible">Points Possible:</label>
+    <input type="text" id="possible" value="300"><br>
+    <button type="button" id="submit">submit</button>
+</form>
+<div id="results"></div>
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    $(function(){
+        $('#submit').on('click', function(){
+            var student = {};
+            student.first = $('#first').val();
+            student.last = $('#last').val();
+            student.earned = $('#earned').val();
+            student.possible = $('#possible').val();
+
+            student.percent = student.earned / student.possible;
+            student.grade = "F";
+            if (student.percent >= .9){
+                student.grade = "A"
+            } else if (student.percent >= .8){
+                student.grade = "B";
+            } else if (student.percent >= .7){
+                student.grade = "C";
+            } else if (student.percent >= .6) {
+                student.grade = "D";
+            }
+
+            $('#results').html(student.first + " " + student.last);
+            $('#results').append("<br>percent: " + student.percent.toFixed(2));
+            $('#results').append("<br>grade: " + student.grade);
+        });
+    })
+</script>
+
+</body>
+</html>
