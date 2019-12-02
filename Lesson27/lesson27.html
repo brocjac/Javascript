@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Objects</title>
+</head>
+<body>
+
+<form>
+    <label for="first">First Name:</label>
+    <input type="text" id="first" value="Jeff"><br>
+    <label for="last">Last Name:</label>
+    <input type="text" id="last" value="Grissom"><br>
+    <label for="earned">Points Earned:</label>
+    <input type="text" id="earned" value="235"><br>
+    <label for="possible">Points Possible:</label>
+    <input type="text" id="possible" value="300"><br>
+    <button type="button" id="submit">submit</button>
+    <button type="button" id="display">display</button>
+    <button type="button" id="sort">sort</button>
+</form>
+<div id="results"></div>
+
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    $(function(){
+        var students = [];
+
+        $('#submit').on('click', function(){
+            var student = {};
+            student.first = $('#first').val();
+            student.last = $('#last').val();
+            student.earned = $('#earned').val();
+            student.possible = $('#possible').val();
+
+            student.percent = student.earned / student.possible;
+            student.grade = "F";
+            if (student.percent >= .9){
+                student.grade = "A"
+            } else if (student.percent >= .8){
+                student.grade = "B";
+            } else if (student.percent >= .7){
+                student.grade = "C";
+            } else if (student.percent >= .6) {
+                student.grade = "D";
+            }
+
+            students.push(student);
+            $(':text').val("");
+            $('#first').focus();
+            // $('#results').html(student.first + " " + student.last);
+            // $('#results').append("<br>percent: " + student.percent.toFixed(2));
+            // $('#results').append("<br>grade: " + student.grade);
+        });
+
+        $('#display').on('click', function(){
+            $('#results').html("");
+            for (var i = 0; i < students.length; i++){
+                var student = students[i];
+                $('#results').append("<hr>" + student.first + " " + student.last);
+                $('#results').append("<br>percent: " + student.percent.toFixed(2));
+                $('#results').append("<br>grade: " + student.grade);
+            }
+        });
+
+        $('#sort').on('click', function(){
+            students.sort(compareStudents);
+        })
+
+        function compareStudents(student1, student2){
+            if (student1.last < student2.last){
+                return -1;
+            }
+            if (student2.last < student1.last){
+                return 1;
+            }
+            return 0;
+        }
+    })
+</script>
+
+</body>
+</html>
