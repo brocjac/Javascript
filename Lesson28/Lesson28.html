@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cats</title>
+</head>
+<body>
+
+<script>
+    var goodCats = ["joe", "max", "allie"];
+    var badCats = goodCats;
+    var moreCats = ["joe", "max", "allie"];
+    displayCats();
+
+    goodCats[0] = "barry";
+    displayCats();
+
+    badCats = ["any cats"];
+    displayCats();
+
+
+    function displayCats(){
+        console.log("good cats: " + goodCats);
+        console.log("bad cats: " + badCats);
+        console.log("good cats and bad cats are" + (goodCats == badCats ? "" : " NOT") + " the same");
+        console.log("good cats and more cats are" + (goodCats == moreCats ? "" : " NOT") + " the same");
+        console.log("");
+    }
+</script>
+
+</body>
+</html>
